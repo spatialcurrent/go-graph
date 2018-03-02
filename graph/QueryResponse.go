@@ -15,7 +15,7 @@ type QueryResponse struct {
   Success bool `json:"success" bson:"success" yaml:"success" hcl:"success"`
   Message string `json:"message" bson:"message" yaml:"message" hcl:"message"`
   Query string `json:"query" bson:"query" yaml:"query" hcl:"query"`
-  Results *QueryResults `json:"results" bson:"results" yaml:"results" hcl:"results"`
+  Results QueryResults `json:"results" bson:"results" yaml:"results" hcl:"results"`
 }
 
 func (qr *QueryResponse) Json() (string, error) {
@@ -80,7 +80,7 @@ func (qr *QueryResponse) WriteToResponse(w http.ResponseWriter, ext string) {
 
   } else if ext == "json" {
 
-    output_bytes, err := json.Marshal(qr)
+    output_text, err := qr.Json()
     if err != nil {
       w.Header().Set("Content-Type", "plain/text")
       fmt.Fprintf(w, "Could not marshal query response as json")
@@ -88,7 +88,7 @@ func (qr *QueryResponse) WriteToResponse(w http.ResponseWriter, ext string) {
       return
     }
     w.Header().Set("Content-Type", contentType)
-    fmt.Fprintf(w, string(output_bytes))
+    fmt.Fprintf(w, output_text)
 
   } else if ext == "jsonl" {
 

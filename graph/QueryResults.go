@@ -4,9 +4,13 @@ import (
   "encoding/json"
 )
 
+import (
+  "github.com/spatialcurrent/go-graph/graph/elements"
+)
+
 type QueryResults struct {
-  Entities []Entity `json:"entities" bson:"entities" yaml:"entities" hcl:"entities"`
-  Edges []Edge `json:"edges" bson:"edges" yaml:"edges" hcl"edges`
+  Entities []elements.Entity `json:"entities" bson:"entities" yaml:"entities" hcl:"entities"`
+  Edges []elements.Edge `json:"edges" bson:"edges" yaml:"edges" hcl:"edges"`
 }
 
 func (results *QueryResults) Json() (string, error) {
