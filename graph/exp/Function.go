@@ -5,8 +5,8 @@ import (
 )
 
 type Function struct {
-  Name string
-  Arguments []string
+  Name string `json:"name" bson:"name" yaml:"name" hcl:"name"`
+  Arguments []string `json:"arguments" bson:"arguments" yaml:"arguments" hcl:"arguments"`
 }
 
 func (f Function) Sgol() string {

@@ -27,6 +27,10 @@ func (e *Entity) GetProperties() map[string]interface{} {
   return e.Properties
 }
 
+func (e *Entity) SetProperty(name string, value interface{}) {
+  e.Properties[name] = value
+}
+
 func (e *Entity) GetPropertyAsFloat64(name string) (float64, error) {
   if i, ok := e.Properties[name]; ok {
     switch i.(type) {

@@ -32,3 +32,7 @@ func (e *Edge) IsDirected() bool {
 func (e *Edge) GetProperties() map[string]interface{} {
   return e.Properties
 }
+
+func (e *Edge) SetProperty(name string, value interface{}) {
+  e.Properties[name] = value
+}

@@ -9,8 +9,8 @@ import (
 )
 
 type QueryResults struct {
-  Entities []elements.Entity `json:"entities" bson:"entities" yaml:"entities" hcl:"entities"`
-  Edges []elements.Edge `json:"edges" bson:"edges" yaml:"edges" hcl:"edges"`
+  Entities []elements.Entity `json:"entities,omitempty" bson:"entities" yaml:"entities,omitempty" hcl:"entities"`
+  Edges []elements.Edge `json:"edges,omitempty" bson:"edges" yaml:"edges,omitempty" hcl:"edges"`
 }
 
 func (results *QueryResults) Json() (string, error) {
