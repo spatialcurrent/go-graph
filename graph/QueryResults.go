@@ -27,6 +27,15 @@ func (results *QueryResults) FeatureCollection() (FeatureCollection, error) {
   features := make([]Feature, 0)
   for _, e := range results.Entities {
 
+    properties := e.GetProperties()
+    if attributes, ok := properties["attributes"]; ok {
+      p := map[string]interface{}{}
+      for k, v := range attributes.(map[string]string) {
+        p[k] = v
+      }
+      properties = p
+    }
+
     geom_lon, err := e.GetPropertyAsFloat64("geom_lon")
     if err != nil {
       return fc, err
@@ -35,7 +44,7 @@ func (results *QueryResults) FeatureCollection() (FeatureCollection, error) {
     if err != nil {
       return fc, err
     }
-    f := NewFeature(e.GetVertex(), e.GetProperties(), NewPoint(geom_lon, geom_lat))
+    f := NewFeature(e.GetVertex(), properties, NewPoint(geom_lon, geom_lat))
     features = append(features, f)
   }
 

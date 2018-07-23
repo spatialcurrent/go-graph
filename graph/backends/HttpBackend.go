@@ -4,7 +4,7 @@ import (
   "bytes"
   "errors"
   "encoding/json"
-  //"fmt"
+  "fmt"
   "io/ioutil"
   "net/http"
   "strconv"
@@ -114,9 +114,9 @@ func (b *HttpBackend) PostJson(u string, data map[string]interface{}, target int
 		return err
 	}
 
-  //fmt.Println("Response Body")
-  //fmt.Println(len(resp_body))
-  //fmt.Println(string(resp_body))
+  fmt.Println("Response Body")
+  fmt.Println(len(resp_body))
+  fmt.Println(string(resp_body))
 
   if len(resp_body) > 0 {
     err = json.Unmarshal(resp_body, target)

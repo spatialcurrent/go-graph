@@ -8,7 +8,7 @@ import (
 )
 
 import (
-  "github.com/spatialcurrent/go-graph/graph/exp"
+  "github.com/spatialcurrent/go-dfl/dfl"
 )
 
 import (

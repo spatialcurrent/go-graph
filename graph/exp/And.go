@@ -5,7 +5,7 @@ type And struct {
 }
 
 func (a And) Sgol() string {
-  return "("+a.Left.Sgol() + " and " + a.Right.Sgol()+")"
+  return "("+a.Left.Dfl() + " and " + a.Right.Dfl()+")"
 }
 
 func (a And) Map() map[string]interface{} {

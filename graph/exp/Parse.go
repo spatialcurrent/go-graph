@@ -181,6 +181,14 @@ func Parse(in string) (Node, error) {
 					}
 					return &Or{&BinaryOperator{Right: right}}, nil
 
+				} else if s_lc == "xor" {
+
+					right, err := Parse(remainder)
+					if err != nil {
+						return right, err
+					}
+					return &Xor{&BinaryOperator{Right: right}}, nil
+
 				} else if s_lc == "<" {
 
 					right, err := Parse(remainder)

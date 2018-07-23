@@ -8,7 +8,7 @@ type Feature struct {
   Geometry Geometry `json:"geometry" bson:"geometry" yaml:"geometry" hcl:"geometry"`
 }
 
-func NewFeature(id string, properties map[string]interface{}, geom Geometry) Feature {
+func NewFeature(id interface{}, properties map[string]interface{}, geom Geometry) Feature {
 
   properties["id"] = id
 

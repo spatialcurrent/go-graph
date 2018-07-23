@@ -36,3 +36,13 @@ func (e *Edge) GetProperties() map[string]interface{} {
 func (e *Edge) SetProperty(name string, value interface{}) {
   e.Properties[name] = value
 }
+
+func NewEdge(class string, group string, source string, destination string, directed bool, properties map[string]interface{}) *Edge {
+  return &Edge{
+    Class: class,
+    Group: group,
+    Source: source,
+    Destination: destination,
+    Properties: properties,
+  }
+}
